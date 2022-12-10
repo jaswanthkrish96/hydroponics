@@ -1,0 +1,7 @@
+week,n_ppm,p_ppm,k_ppm,ca_ppm,mg_ppm,fe_ppm,notes
+1,80,25,120,80,25,1.5,seedling establishment - half strength
+2,120,35,160,100,35,2.0,rosette expansion
+3,150,45,190,120,45,2.5,rapid vegetative growth
+4,180,50,210,140,50,3.0,peak uptake window
+5,180,50,210,140,50,3.0,maintain; monitor tipburn
+6,160,45,200,130,45,2.5,pre-harvest taper
