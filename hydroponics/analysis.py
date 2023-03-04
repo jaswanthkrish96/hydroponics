@@ -36,3 +36,14 @@ def rank_trials(df: pd.DataFrame) -> pd.DataFrame:
     out["yield_score"] = (out["yield_g_per_plant"] / ymax * 40.0).round(2)
     out["total_score"] = (out["param_score"] + out["yield_score"]).round(2)
     return out.sort_values("total_score", ascending=False).reset_index(drop=True)
+
+
+def parameter_sensitivity(df: pd.DataFrame) -> dict:
+    """Correlation of each parameter with yield - crude sensitivity map."""
+    result = {}
+    for name in OPTIMAL_RANGES:
+        if df[name].std() > 0:
+            result[name] = float(np.corrcoef(df[name], df["yield_g_per_plant"])[0, 1])
+        else:
+            result[name] = 0.0
+    return dict(sorted(result.items(), key=lambda kv: -abs(kv[1])))
